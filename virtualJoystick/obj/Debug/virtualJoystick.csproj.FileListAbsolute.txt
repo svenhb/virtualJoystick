@@ -1,0 +1,7 @@
+D:\Projekte\Programmierung_CSharp\virtualJoystick\virtualJoystick\bin\Debug\virtualJoystick.dll
+D:\Projekte\Programmierung_CSharp\virtualJoystick\virtualJoystick\bin\Debug\virtualJoystick.pdb
+D:\Projekte\Programmierung_CSharp\virtualJoystick\virtualJoystick\obj\Debug\virtualJoystick.csprojResolveAssemblyReference.cache
+D:\Projekte\Programmierung_CSharp\virtualJoystick\virtualJoystick\obj\Debug\virtualJoystick.virtualJoystick.resources
+D:\Projekte\Programmierung_CSharp\virtualJoystick\virtualJoystick\obj\Debug\virtualJoystick.csproj.GenerateResource.Cache
+D:\Projekte\Programmierung_CSharp\virtualJoystick\virtualJoystick\obj\Debug\virtualJoystick.dll
+D:\Projekte\Programmierung_CSharp\virtualJoystick\virtualJoystick\obj\Debug\virtualJoystick.pdb
