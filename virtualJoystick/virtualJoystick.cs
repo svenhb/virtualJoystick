@@ -16,7 +16,7 @@ namespace virtualJoystick
     {
         private bool is2d = true;
         private int jogRaster = 5;
-        private double[] jogValues = new double[] { 0.1, 0.5, 1, 5, 10, 50 };
+        private double[] jogValues = new double[] { 0,0.1, 0.5, 1, 5, 10, 50 };
         private Color jogColorStandby= Color.Orange;
         private Color jogColorActive= Color.Red;
         SolidBrush jogBrush;
@@ -26,6 +26,14 @@ namespace virtualJoystick
         int jogPosX, jogPosY;
         bool jogStart = false;
 
+        public double[] JoystickLabel
+        {   get
+            {   return jogValues; }
+            set
+            {   jogValues = value;
+                makeBackgroundPicture();
+            }
+        }
         public bool Joystick2Dimension
         {
             get
@@ -98,7 +106,7 @@ namespace virtualJoystick
                         sizeX = Width;
                     }
                     grp.FillRectangle(bkgrColor, new Rectangle(locationX, locationY, sizeX, sizeY));
-                    grp.DrawString(jogValues[jogRaster-i-1].ToString(), new Font("Microsoft Sans Serif", stepY/2-2), Brushes.Black, new RectangleF(locationX+ stepX / 8, locationY+ stepY / 8, 5*stepX, stepY));
+                    grp.DrawString(jogValues[jogRaster-i].ToString(), new Font("Microsoft Sans Serif", stepY/2-2), Brushes.Black, new RectangleF(locationX+ stepX / 8, locationY+ stepY / 8, 5*stepX, stepY));
                 }
             }
             this.BackgroundImage = jogBackground;
@@ -172,7 +180,7 @@ namespace virtualJoystick
             OnJogTimer(new JogEventArgs(getValue(Width, jogPosX), -1*getValue(Height, jogPosY)));    // new Point(distanceX, distanceY));
         }
 
-        private double getValue(int max,int pos)
+        private int getValue(int max,int pos)
         {
             int center = max / 2;
             int distance = pos - center;
@@ -180,14 +188,13 @@ namespace virtualJoystick
             int sign = Math.Sign(distance);
             int step = max / (2 * jogRaster);
             if (value < step / 2)
-                return 0.0;
-            int index = value / step;
-            if (index >= jogValues.Length)
-                index = jogValues.Length-1;
+                return 0;
+            int index = value / step+1;
+            if (index > jogRaster)
+                index = jogRaster;
             if (index < 0)
                 index = 0;
-            double dvalue = sign* jogValues[index];
-            return dvalue;
+            return sign * index;
         }
 
         public event JogEventHandler JoyStickEvent;
@@ -210,15 +217,15 @@ namespace virtualJoystick
 
     public class JogEventArgs : EventArgs
     {
-        private double jogPosX,jogPosY;
-        public JogEventArgs(double posX, double posY)
+        private int jogPosX,jogPosY;
+        public JogEventArgs(int posX, int posY)
         {
             this.jogPosX = posX;
             this.jogPosY = posY;
         }
-        public double JogPosX
+        public int JogPosX
         {   get { return jogPosX; } }
-        public double JogPosY
+        public int JogPosY
         { get { return jogPosY; } }
     }
 }
