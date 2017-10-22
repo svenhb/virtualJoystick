@@ -110,6 +110,7 @@ namespace virtualJoystick
                 }
             }
             this.BackgroundImage = jogBackground;
+            this.Refresh();
         }
 
         private void virtualJoystick_Load(object sender, EventArgs e)
@@ -137,7 +138,7 @@ namespace virtualJoystick
             jogBrush = jogBrushStandby;
             jogStart = false;
             jogTimer.Stop();
-            Refresh();
+            this.Refresh();
         }
 
         private void virtualJoystick_MouseLeave(object sender, EventArgs e)
@@ -206,7 +207,11 @@ namespace virtualJoystick
 
         private void virtualJoystick_SizeChanged(object sender, EventArgs e)
         {
+            jogPosX = Width / 2;
+            jogPosY = Height / 2;
+            jogBrush = jogBrushStandby;
             makeBackgroundPicture();
+            this.Refresh();
         }
 
         public virtualJoystick()

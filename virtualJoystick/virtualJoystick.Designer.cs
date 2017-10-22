@@ -52,6 +52,7 @@
             this.MouseLeave += new System.EventHandler(this.virtualJoystick_MouseLeave);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.virtualJoystick_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.virtualJoystick_MouseUp);
+            this.Resize += new System.EventHandler(this.virtualJoystick_SizeChanged);
             this.ResumeLayout(false);
 
         }
