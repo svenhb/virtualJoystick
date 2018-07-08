@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace virtualJoystick
@@ -85,12 +79,13 @@ namespace virtualJoystick
         }
 
         System.Drawing.Bitmap jogBackground;
-        private void makeBackgroundPicture()
+        private void makeBackgroundPicture(bool border = true)
         {
             jogBackground = new System.Drawing.Bitmap(Width,Height);
             int stepX = Width / (2 * jogRaster);
             int stepY = Height / (2 * jogRaster);
             jogRadius = stepX / 2;
+            Pen borderColor = new Pen(Color.Black,1);
             using (Graphics grp = Graphics.FromImage(jogBackground))
             {
                 for (int i = 0; i < jogRaster; i++)
@@ -106,6 +101,9 @@ namespace virtualJoystick
                         sizeX = Width;
                     }
                     grp.FillRectangle(bkgrColor, new Rectangle(locationX, locationY, sizeX, sizeY));
+                    if (border)
+                        grp.DrawRectangle(borderColor, new Rectangle(locationX, locationY, sizeX-1, sizeY-1));
+
                     grp.DrawString(jogValues[jogRaster-i].ToString(), new Font("Microsoft Sans Serif", stepY/2-2), Brushes.Black, new RectangleF(locationX+ stepX / 8, locationY+ stepY / 8, 5*stepX, stepY));
                 }
             }
