@@ -10,6 +10,8 @@ namespace virtualJoystick
     {
         private bool is2d = true;
         private int jogRaster = 5;
+        private int jogRasterMark = 0;
+        private string jogText = "";
         private double[] jogValues = new double[] { 0,0.1, 0.5, 1, 5, 10, 50 };
         private Color jogColorStandby= Color.Orange;
         private Color jogColorActive= Color.Red;
@@ -47,6 +49,27 @@ namespace virtualJoystick
                 makeBackgroundPicture();
             }
         }
+        public int JoystickRasterMark
+        {
+            get
+            { return jogRasterMark; }
+            set
+            {
+                jogRasterMark = value;
+                makeBackgroundPicture();
+            }
+        }
+        public string JoystickText
+        {
+            get
+            { return jogText; }
+            set
+            {
+                jogText = value;
+                makeBackgroundPicture();
+            }
+        }
+
         public Color JoystickActive
         {
             get
@@ -79,11 +102,14 @@ namespace virtualJoystick
         }
 
         System.Drawing.Bitmap jogBackground;
-        private void makeBackgroundPicture(bool border = true)
+        private void makeBackgroundPicture(bool border = true)                  // create background picture for control
         {
             jogBackground = new System.Drawing.Bitmap(Width,Height);
             int stepX = Width / (2 * jogRaster);
             int stepY = Height / (2 * jogRaster);
+            Font stringFont = new Font("Microsoft Sans Serif", stepY - 5, GraphicsUnit.Pixel);
+            SizeF stringSize = new SizeF();
+
             jogRadius = stepX / 2;
             Pen borderColor = new Pen(Color.Black,1);
             using (Graphics grp = Graphics.FromImage(jogBackground))
@@ -91,6 +117,8 @@ namespace virtualJoystick
                 for (int i = 0; i < jogRaster; i++)
                 {
                     SolidBrush bkgrColor = new SolidBrush(Color.FromArgb(255, 255, 255, i * (255 / jogRaster)));
+                    if (i == (jogRaster-jogRasterMark))
+                        bkgrColor = new SolidBrush(Color.FromArgb(255, 0, 255, 0));
                     int locationX = i * stepX;
                     int locationY = i * stepY;
                     int sizeX = Width - 2 * locationX;
@@ -104,8 +132,12 @@ namespace virtualJoystick
                     if (border)
                         grp.DrawRectangle(borderColor, new Rectangle(locationX, locationY, sizeX-1, sizeY-1));
 
-                    grp.DrawString(jogValues[jogRaster-i].ToString(), new Font("Microsoft Sans Serif", stepY/2-2), Brushes.Black, new RectangleF(locationX+ stepX / 8, locationY+ stepY / 8, 5*stepX, stepY));
+                    stringSize = grp.MeasureString(jogValues[jogRaster - i].ToString(), stringFont);
+                    grp.DrawString(jogValues[jogRaster-i].ToString(), stringFont, Brushes.Black, new RectangleF(locationX+ stepX / 8, locationY+ 1 , stringSize.Width, stepY));
                 }
+                stringFont = new Font(stringFont, FontStyle.Bold);
+                stringSize = grp.MeasureString(jogText, stringFont);
+                grp.DrawString(jogText, stringFont, Brushes.Black, new RectangleF(Width - stringSize.Width-3, 1, stringSize.Width, stepY));
             }
             this.BackgroundImage = jogBackground;
             this.Refresh();
