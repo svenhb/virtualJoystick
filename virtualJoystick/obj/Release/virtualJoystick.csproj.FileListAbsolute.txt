@@ -12,3 +12,12 @@ D:\Projekte\_Software\Programmierung_CSharp\virtualJoystick\virtualJoystick\obj\
 D:\Projekte\_Software\Programmierung_CSharp\virtualJoystick\virtualJoystick\obj\Release\virtualJoystick.csproj.GenerateResource.Cache
 D:\Projekte\_Software\Programmierung_CSharp\virtualJoystick\virtualJoystick\obj\Release\virtualJoystick.dll
 D:\Projekte\_Software\Programmierung_CSharp\virtualJoystick\virtualJoystick\obj\Release\virtualJoystick.pdb
+D:\Projekte\virtualJoystick\virtualJoystick\bin\Release\virtualJoystick.dll
+D:\Projekte\virtualJoystick\virtualJoystick\bin\Release\virtualJoystick.pdb
+D:\Projekte\virtualJoystick\virtualJoystick\obj\Release\virtualJoystick.csproj.AssemblyReference.cache
+D:\Projekte\virtualJoystick\virtualJoystick\obj\Release\virtualJoystick.virtualJoystick.resources
+D:\Projekte\virtualJoystick\virtualJoystick\obj\Release\virtualJoystick.csproj.GenerateResource.cache
+D:\Projekte\virtualJoystick\virtualJoystick\obj\Release\virtualJoystick.csproj.CoreCompileInputs.cache
+D:\Projekte\virtualJoystick\virtualJoystick\obj\Release\virtualJoystick.dll
+D:\Projekte\virtualJoystick\virtualJoystick\obj\Release\virtualJoystick.pdb
+D:\Projekte\virtualJoystick\virtualJoystick\obj\Release\virtualJoystick.Properties.Resources.resources

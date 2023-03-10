@@ -1,0 +1,8 @@
+D:\Projekte\virtualJoystick\virtualJoystick\bin\Debug\virtualJoystick.dll
+D:\Projekte\virtualJoystick\virtualJoystick\bin\Debug\virtualJoystick.pdb
+D:\Projekte\virtualJoystick\virtualJoystick\obj\Debug\virtualJoystick.csproj.AssemblyReference.cache
+D:\Projekte\virtualJoystick\virtualJoystick\obj\Debug\virtualJoystick.virtualJoystick.resources
+D:\Projekte\virtualJoystick\virtualJoystick\obj\Debug\virtualJoystick.csproj.GenerateResource.cache
+D:\Projekte\virtualJoystick\virtualJoystick\obj\Debug\virtualJoystick.csproj.CoreCompileInputs.cache
+D:\Projekte\virtualJoystick\virtualJoystick\obj\Debug\virtualJoystick.dll
+D:\Projekte\virtualJoystick\virtualJoystick\obj\Debug\virtualJoystick.pdb
