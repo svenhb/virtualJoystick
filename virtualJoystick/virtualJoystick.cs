@@ -4,6 +4,7 @@ using System.Windows.Forms;
 
 /*
  * 2023-03-10 add choice of real buttons
+ * 2023-03-12 avoid move-command on right-click for context-menu
 */
 namespace virtualJoystick
 {
@@ -155,18 +156,21 @@ namespace virtualJoystick
 
         private void VirtualJoystick_MouseDown(object sender, MouseEventArgs e)
         {
-            if (!useClassicButtons)	//jogRaster > 1)
+            if (e.Button == MouseButtons.Left)
             {
-                jogPosX = JogSetlimit(e.X, Width);
-                jogPosY = JogSetlimit(e.Y, Height);
-                jogBrush = jogBrushActive;
-                SendPositions();
+                if (!useClassicButtons) //jogRaster > 1)
+                {
+                    jogPosX = JogSetlimit(e.X, Width);
+                    jogPosY = JogSetlimit(e.Y, Height);
+                    jogBrush = jogBrushActive;
+                    SendPositions();
+                }
+                else
+                { FindButtonSetStep(sender); }
+                jogStart = true;
+                jogTimer.Start();
+                this.Refresh();
             }
-            else
-            { FindButtonSetStep(sender); }	
-            jogStart = true;
-            jogTimer.Start();
-            this.Refresh();
         }
 
         private void VirtualJoystick_MouseLeave(object sender, EventArgs e)
